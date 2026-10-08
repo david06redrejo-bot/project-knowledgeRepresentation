@@ -6,9 +6,9 @@
 ---
 
 ## 👥 Group Members
-* **David Redrejo** (NIU: 1790336)
-* **Elias Barreiro** (NIU: 1796921)
-* **Aya Ahmed Abdelwhab** (NIU: 1828539)
+* **David Redrejo**
+* **Elias Barreiro**
+* **Aya Ahmed Abdelwhab**
 
 ---
 

@@ -3,7 +3,7 @@
 **Project**: Catalan Research Groups & AI Laboratories Knowledge Base  
 **Course**: Knowledge Representation — Bachelor's Degree in Artificial Intelligence (UAB)  
 **Academic Year**: 2024–2025 / 2026 Term  
-**Group Members**: David Redrejo (NIU: 1790336), Elias Barreiro (NIU: 1796921), Aya Ahmed Abdelwhab (NIU: 1828539)  
+**Group Members**: David Redrejo, Elias Barreiro, Aya Ahmed Abdelwhab  
 
 ---
 

@@ -7,9 +7,9 @@
 ---
 
 ### Group Identification
-* **David Redrejo** (NIU: 1790336) — Lead Logic Formalization & Verification Pipelines
-* **Elias Barreiro** (NIU: 1796921) — Semantic Web Standards & Ontology Architecture
-* **Aya Ahmed Abdelwhab** (NIU: 1828539) — Cognitive Modeling & Description Logic Semantics
+* **David Redrejo** — Lead Logic Formalization & Verification Pipelines
+* **Elias Barreiro** — Semantic Web Standards & Ontology Architecture
+* **Aya Ahmed Abdelwhab** — Cognitive Modeling & Description Logic Semantics
 
 ---
 
