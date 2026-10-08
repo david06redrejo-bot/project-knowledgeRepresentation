@@ -1,0 +1,251 @@
+@prefix : <http://www.semanticweb.org/uab/catalan-research-groups#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.semanticweb.org/uab/catalan-research-groups> a owl:Ontology .
+
+:AcademicAILab a owl:Class ;
+    rdfs:subClassOf :AIResearchGroup ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :AIResearchGroup [ a owl:Restriction ;
+                        owl:onProperty :belongsToInstitution ;
+                        owl:someValuesFrom :University ] ) ] .
+
+:BiomedicalResearchInstitute a owl:Class ;
+    rdfs:subClassOf :ResearchInstitute .
+
+:CERCAInstitute a owl:Class ;
+    rdfs:subClassOf :ResearchInstitute .
+
+:ComputerVisionDomain a owl:Class ;
+    rdfs:subClassOf :ArtificialIntelligenceDomain .
+
+:ConsolidatedCatalanResearchGroup a owl:Class ;
+    rdfs:subClassOf :RecognizedResearchGroup ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :RecognizedResearchGroup [ a owl:Restriction ;
+                        owl:onProperty :holdsGrant ;
+                        owl:someValuesFrom :ConsolidatedSGRGrant ] ) ] .
+
+:DatasetOrArtifact a owl:Class ;
+    rdfs:subClassOf :ScientificOutput .
+
+:EarlyCareerResearcher a owl:Class ;
+    rdfs:subClassOf :Researcher .
+
+:InterInstitutionalResearchGroup a owl:Class ;
+    rdfs:subClassOf :ResearchGroup ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :ResearchGroup [ a owl:Restriction ;
+                        owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                        owl:onClass :ResearchOrganization ;
+                        owl:onProperty :belongsToInstitution ] ) ] .
+
+:JointResearchCenter a owl:Class ;
+    rdfs:subClassOf :ResearchInstitute .
+
+:KnowledgeRepresentationDomain a owl:Class ;
+    rdfs:subClassOf :ArtificialIntelligenceDomain .
+
+:NaturalLanguageProcessingDomain a owl:Class ;
+    rdfs:subClassOf :ArtificialIntelligenceDomain .
+
+:PeerReviewedPublication a owl:Class ;
+    rdfs:subClassOf :ScientificOutput .
+
+:PublicUniversity a owl:Class ;
+    rdfs:subClassOf :University ;
+    owl:disjointWith :PrivateUniversity .
+
+:SeniorResearcher a owl:Class ;
+    rdfs:subClassOf :Researcher .
+
+:collaboratesWith a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:domain :ResearchOrganization ;
+    rdfs:range :ResearchOrganization .
+
+:hasAcronym a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain :ResearchOrganization ;
+    rdfs:range xsd:string .
+
+:hasFoundingYear a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain :ResearchGroup ;
+    rdfs:range xsd:integer .
+
+:hasInternalCode a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain :ResearchGroup ;
+    rdfs:range xsd:string .
+
+:hasMemberCount a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain :ResearchGroup ;
+    rdfs:range xsd:integer .
+
+:hasOfficialName a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain :Agent ;
+    rdfs:range xsd:string .
+
+:hasOrcid a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain :Person ;
+    rdfs:range xsd:string .
+
+:hasSGRCode a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:domain :ResearchGroup ;
+    rdfs:range xsd:string .
+
+:hasWebURL a owl:DatatypeProperty ;
+    rdfs:domain :ResearchOrganization ;
+    rdfs:range xsd:string .
+
+:subDomainOf a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:domain :ResearchDomain ;
+    rdfs:range :ResearchDomain .
+
+:ComputerScienceDomain a owl:Class ;
+    rdfs:subClassOf :EngineeringAndTechnology .
+
+:ConsolidatedSGRGrant a owl:Class ;
+    rdfs:subClassOf :SGRGrant ;
+    owl:disjointWith :EmergingSGRGrant .
+
+:EmergingResearchGroup a owl:Class ;
+    rdfs:subClassOf :ResearchGroup .
+
+:EmergingSGRGrant a owl:Class ;
+    rdfs:subClassOf :SGRGrant .
+
+:ExactAndNaturalSciences a owl:Class ;
+    rdfs:subClassOf :ResearchDomain .
+
+:HigherEducationInstitution a owl:Class ;
+    rdfs:subClassOf :ResearchOrganization .
+
+:MedicalAndHealthSciences a owl:Class ;
+    rdfs:subClassOf :ResearchDomain .
+
+:PrivateUniversity a owl:Class ;
+    rdfs:subClassOf :University .
+
+:SocialSciencesAndHumanities a owl:Class ;
+    rdfs:subClassOf :ResearchDomain .
+
+:hasMember a owl:ObjectProperty ;
+    rdfs:domain :ResearchGroup ;
+    rdfs:range :Researcher ;
+    owl:inverseOf :isMemberOf .
+
+:hasPrincipalInvestigator a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:domain :ResearchGroup ;
+    rdfs:range :PrincipalInvestigator ;
+    owl:inverseOf :isPrincipalInvestigatorOf .
+
+:hostsResearchGroup a owl:ObjectProperty ;
+    rdfs:domain :ResearchOrganization ;
+    rdfs:range :ResearchGroup ;
+    owl:inverseOf :belongsToInstitution .
+
+:isAwardedTo a owl:ObjectProperty ;
+    rdfs:domain :GrantAccreditation ;
+    rdfs:range :ResearchGroup ;
+    owl:inverseOf :holdsGrant .
+
+:isDomainOf a owl:ObjectProperty ;
+    rdfs:domain :ResearchDomain ;
+    rdfs:range :ResearchOrganization ;
+    owl:inverseOf :investigatesDomain .
+
+:isMemberOf a owl:ObjectProperty ;
+    rdfs:domain :Researcher ;
+    rdfs:range :ResearchGroup ;
+    owl:inverseOf :hasMember .
+
+:isPrincipalInvestigatorOf a owl:ObjectProperty ;
+    rdfs:domain :PrincipalInvestigator ;
+    rdfs:range :ResearchGroup ;
+    owl:inverseOf :hasPrincipalInvestigator .
+
+:AIResearchGroup a owl:Class ;
+    rdfs:subClassOf :ResearchGroup ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :ResearchGroup [ a owl:Restriction ;
+                        owl:onProperty :investigatesDomain ;
+                        owl:someValuesFrom :ArtificialIntelligenceDomain ] ) ] .
+
+:EngineeringAndTechnology a owl:Class ;
+    rdfs:subClassOf :ResearchDomain .
+
+:PrincipalInvestigator a owl:Class ;
+    rdfs:subClassOf :Researcher .
+
+:RecognizedResearchGroup a owl:Class ;
+    rdfs:subClassOf :ResearchGroup ;
+    owl:disjointWith :EmergingResearchGroup .
+
+:SGRGrant a owl:Class ;
+    rdfs:subClassOf :GrantAccreditation .
+
+:holdsGrant a owl:ObjectProperty ;
+    rdfs:domain :ResearchGroup ;
+    rdfs:range :GrantAccreditation ;
+    owl:inverseOf :isAwardedTo .
+
+:investigatesDomain a owl:ObjectProperty ;
+    rdfs:domain :ResearchOrganization ;
+    rdfs:range :ResearchDomain ;
+    owl:inverseOf :isDomainOf .
+
+:Agent a owl:Class ;
+    rdfs:subClassOf owl:Thing .
+
+:Person a owl:Class ;
+    rdfs:subClassOf :Agent .
+
+:ResearchInstitute a owl:Class ;
+    rdfs:subClassOf :ResearchOrganization .
+
+:ScientificOutput a owl:Class ;
+    rdfs:subClassOf owl:Thing .
+
+:University a owl:Class ;
+    rdfs:subClassOf :HigherEducationInstitution .
+
+:belongsToInstitution a owl:ObjectProperty ;
+    rdfs:domain :ResearchGroup ;
+    rdfs:range :ResearchOrganization ;
+    owl:inverseOf :hostsResearchGroup .
+
+:ArtificialIntelligenceDomain a owl:Class ;
+    rdfs:subClassOf :ComputerScienceDomain .
+
+:GrantAccreditation a owl:Class ;
+    rdfs:subClassOf owl:Thing .
+
+:Researcher a owl:Class ;
+    rdfs:subClassOf :Person .
+
+:ResearchDomain a owl:Class ;
+    rdfs:subClassOf owl:Thing .
+
+:ResearchOrganization a owl:Class ;
+    rdfs:subClassOf :Agent .
+
+:ResearchGroup a owl:Class ;
+    rdfs:subClassOf :ResearchOrganization .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :ResearchOrganization :Person :ResearchDomain :GrantAccreditation :ScientificOutput ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( :ExactAndNaturalSciences :MedicalAndHealthSciences :EngineeringAndTechnology :SocialSciencesAndHumanities ) .
+
